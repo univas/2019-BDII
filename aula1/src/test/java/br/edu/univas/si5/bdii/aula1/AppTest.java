@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import javax.persistence.EntityManager;
 
 import br.edu.univas.bd2.model.entities.Cargo;
+import br.edu.univas.bd2.model.entities.Department;
 import br.edu.univas.bd2.model.entities.State;
 import br.edu.univas.bd2.util.HibernateUtil;
 import junit.framework.TestCase;
@@ -51,5 +52,18 @@ public class AppTest extends TestCase {
 		em.getTransaction().commit();
 		
 		System.out.println(gerente.getCodigo());
+	}
+	
+	public void testDepartament() {
+		Department dep = new Department();
+		dep.setName("Vendas");
+
+		EntityManager em = HibernateUtil.getEntityManager();
+		
+		em.getTransaction().begin();
+		em.persist(dep);
+		em.getTransaction().commit();
+		
+		System.out.println("Código do departamento armazenado: " + dep.getCode());
 	}
 }

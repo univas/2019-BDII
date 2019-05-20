@@ -1,24 +1,27 @@
 package br.edu.univas.bd2.model.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "ESTADO")
 public class State implements Serializable {
 
-	public State() {
-		
-	}
+	public State() {}
 	
 	@Id
 	private int ibge;
 	private String sigla;
 	private String nome;
 	private float area;
+
+	@OneToMany
+	private Set<City> cities;
 	
 	public int getIbge() {
 		return ibge;
@@ -44,6 +47,10 @@ public class State implements Serializable {
 	public void setArea(float area) {
 		this.area = area;
 	}
-	
-	
+	public Set<City> getCities() {
+		return cities;
+	}
+	public void setCities(Set<City> cities) {
+		this.cities = cities;
+	}	
 }
